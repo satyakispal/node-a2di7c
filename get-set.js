@@ -4,16 +4,16 @@ function Archiver() {
   const weight = null;
   Object.defineProperty(this, 'weight', {
     get() {
-      console.log('get!');
+      console.log('inside get!');
       return weight;
     },
   });
 }
 
 const arc = new Archiver();
-arc.weight; // 'get!'
+arc.weight; // 'inside get!'
 
-arc.weight = 30;
+arc.weight = 29;
 // TypeError: setting getter-only property "weight"
 
 function Archiver() {
@@ -22,7 +22,7 @@ function Archiver() {
 
   Object.defineProperty(this, 'weight', {
     get() {
-      console.log('get!');
+      console.log('inside get!');
       return weight;
     },
     set(value) {
@@ -42,4 +42,4 @@ arc.weight = 2;
 arc.weight = 11;
 arc.weight = 16;
 
-arc.getArchive(); // [{ val: 2 }, { val: 11 }, { val: 16 }]
+arc.getArchive(); // [{ val: 2 }, { val: 11 }, { val: 16 }] (output)
